@@ -1,0 +1,22 @@
+{
+  "changelogDate": "20220831034126",
+  "clientRootFolder": "reservation",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "reservation",
+  "microservicePath": "../hcp-reservation",
+  "name": "Condominium",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass",
+  "skipServer": true
+}

@@ -1,0 +1,28 @@
+{
+  "hcpgatewayApp": {
+    "reservationCondominium": {
+      "home": {
+        "title": "Condominiums",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Condominium",
+        "createOrEditLabel": "Criar ou editar Condominium",
+        "notFound": "Nenhum Condominium encontrado"
+      },
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Condominium {{ id }}?"
+      },
+      "detail": {
+        "title": "Condominium"
+      },
+      "id": "ID",
+      "name": "Name"
+    }
+  },
+  "reservationApp": {
+    "reservationCondominium": {
+      "created": "Um novo Condominium foi criado com o identificador {{ param }}",
+      "updated": "Um Condominium foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Condominium foi excluído com o identificador {{ param }}"
+    }
+  }
+}

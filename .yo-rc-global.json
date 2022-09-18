@@ -2,7 +2,8 @@
   "generator-jhipster:7.8.0": {
     "promptValues": {
       "packageName": "br.com.hcp.gateway",
-      "nativeLanguage": "pt-br"
+      "nativeLanguage": "pt-br",
+      "microservicePath": "../hcp-reservation"
     }
   }
 }
