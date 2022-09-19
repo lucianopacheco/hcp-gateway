@@ -9,6 +9,12 @@ const Condominium = () => import('@/entities/reservation/condominium/condominium
 const CondominiumUpdate = () => import('@/entities/reservation/condominium/condominium-update.vue');
 // prettier-ignore
 const CondominiumDetails = () => import('@/entities/reservation/condominium/condominium-details.vue');
+// prettier-ignore
+const Location = () => import('@/entities/reservation/location/location.vue');
+// prettier-ignore
+const LocationUpdate = () => import('@/entities/reservation/location/location-update.vue');
+// prettier-ignore
+const LocationDetails = () => import('@/entities/reservation/location/location-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default {
@@ -37,6 +43,30 @@ export default {
       path: 'condominium/:condominiumId/view',
       name: 'CondominiumView',
       component: CondominiumDetails,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'location',
+      name: 'Location',
+      component: Location,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'location/new',
+      name: 'LocationCreate',
+      component: LocationUpdate,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'location/:locationId/edit',
+      name: 'LocationEdit',
+      component: LocationUpdate,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'location/:locationId/view',
+      name: 'LocationView',
+      component: LocationDetails,
       meta: { authorities: [Authority.USER] },
     },
     // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

@@ -1,0 +1,9 @@
+{
+  "hcpgatewayApp": {
+    "LocationType": {
+      "null": "",
+      "HOME": "HOME",
+      "LOCATION": "LOCATION"
+    }
+  }
+}

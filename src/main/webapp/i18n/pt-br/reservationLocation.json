@@ -1,0 +1,34 @@
+{
+  "hcpgatewayApp": {
+    "reservationLocation": {
+      "home": {
+        "title": "Locations",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Location",
+        "createOrEditLabel": "Criar ou editar Location",
+        "notFound": "Nenhum Location encontrado"
+      },
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Location {{ id }}?"
+      },
+      "detail": {
+        "title": "Location"
+      },
+      "id": "ID",
+      "name": "Name",
+      "zipcode": "Zipcode",
+      "address": "Address",
+      "number": "Number",
+      "city": "City",
+      "state": "State",
+      "type": "Type"
+    }
+  },
+  "reservationApp": {
+    "reservationLocation": {
+      "created": "Um novo Location foi criado com o identificador {{ param }}",
+      "updated": "Um Location foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Location foi excluído com o identificador {{ param }}"
+    }
+  }
+}
