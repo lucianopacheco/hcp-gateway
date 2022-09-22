@@ -20,8 +20,17 @@ public class Authority implements Serializable, Persistable<String> {
     @Size(max = 50)
     @Id
     private String name;
+    
+    public Authority() {
+		super();
+	}
 
-    public String getName() {
+	public Authority(@NotNull @Size(max = 50) String name) {
+		super();
+		this.name = name;
+	}
+
+	public String getName() {
         return name;
     }
 

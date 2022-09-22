@@ -15,13 +15,13 @@
         "title": "Location"
       },
       "id": "ID",
-      "name": "Name",
-      "zipcode": "Zipcode",
+      "name": "Nome",
+      "zipcode": "CEP",
       "address": "Address",
-      "number": "Number",
-      "city": "City",
-      "state": "State",
-      "type": "Type"
+      "number": "Número",
+      "city": "Cidade",
+      "state": "Estado",
+      "type": "Tipo de Localização"
     }
   },
   "reservationApp": {

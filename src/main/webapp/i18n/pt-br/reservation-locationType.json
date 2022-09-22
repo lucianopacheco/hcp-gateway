@@ -2,8 +2,8 @@
   "hcpgatewayApp": {
     "LocationType": {
       "null": "",
-      "HOME": "HOME",
-      "LOCATION": "LOCATION"
+      "HOME": "Condomínio",
+      "LOCATION": "Trabalho"
     }
   }
 }
