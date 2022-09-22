@@ -55,10 +55,15 @@ public class UserService {
                 // activate given user for the registration key.
                 user.setActivated(true);
                 user.setActivationKey(null);
+                addRolesDriverAndPassager(user);
                 return saveUser(user);
             })
             .doOnNext(user -> log.debug("Activated user: {}", user));
     }
+
+	private void addRolesDriverAndPassager(User user) {
+		user.setAuthorities(Set.of(new Authority("ROLE_DRIVER"), new Authority("ROLE_PASSENGER")));
+	}
 
     @Transactional
     public Mono<User> completePasswordReset(String newPassword, String key) {
