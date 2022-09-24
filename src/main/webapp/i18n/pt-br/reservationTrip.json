@@ -1,0 +1,37 @@
+{
+  "hcpgatewayApp": {
+    "reservationTrip": {
+      "home": {
+        "title": "Trips",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Trip",
+        "createOrEditLabel": "Criar ou editar Trip",
+        "notFound": "Nenhum Trip encontrado"
+      },
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Trip {{ id }}?"
+      },
+      "detail": {
+        "title": "Trip"
+      },
+      "id": "ID",
+      "driverLogin": "Driver Login",
+      "whenDateTime": "When Date Time",
+      "destinationType": "Destination Type",
+      "availableSeats": "Available Seats",
+      "price": "Price",
+      "meetingPoint": "Meeting Point",
+      "createdAt": "Created At",
+      "vehicle": "Vehicle",
+      "from": "From",
+      "to": "To"
+    }
+  },
+  "reservationApp": {
+    "reservationTrip": {
+      "created": "Um novo Trip foi criado com o identificador {{ param }}",
+      "updated": "Um Trip foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Trip foi excluído com o identificador {{ param }}"
+    }
+  }
+}
