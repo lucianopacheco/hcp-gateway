@@ -19,7 +19,7 @@
     "enableHibernateCache": false,
     "enableSwaggerCodegen": false,
     "enableTranslation": true,
-    "entities": ["Condominium", "Location"],
+    "entities": ["Condominium", "Location", "Vehicle"],
     "entitySuffix": "",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "7.8.0",

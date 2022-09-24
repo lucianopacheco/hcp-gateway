@@ -1,0 +1,31 @@
+{
+  "hcpgatewayApp": {
+    "reservationVehicle": {
+      "home": {
+        "title": "Vehicles",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Vehicle",
+        "createOrEditLabel": "Criar ou editar Vehicle",
+        "notFound": "Nenhum Vehicle encontrado"
+      },
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Vehicle {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicle"
+      },
+      "id": "ID",
+      "model": "Model",
+      "year": "Year",
+      "plate": "Plate",
+      "driverLogin": "Driver Login"
+    }
+  },
+  "reservationApp": {
+    "reservationVehicle": {
+      "created": "Um novo Vehicle foi criado com o identificador {{ param }}",
+      "updated": "Um Vehicle foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Vehicle foi excluído com o identificador {{ param }}"
+    }
+  }
+}
