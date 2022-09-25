@@ -1,0 +1,10 @@
+{
+  "hcpgatewayApp": {
+    "ReservationStatus": {
+      "null": "",
+      "REQUESTED": "REQUESTED",
+      "CONFIRMED": "CONFIRMED",
+      "CANCELED": "CANCELED"
+    }
+  }
+}

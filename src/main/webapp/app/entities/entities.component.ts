@@ -5,6 +5,7 @@ import CondominiumService from './reservation/condominium/condominium.service';
 import LocationService from './reservation/location/location.service';
 import VehicleService from './reservation/vehicle/vehicle.service';
 import TripService from './reservation/trip/trip.service';
+import ReservationService from './reservation/reservation/reservation.service';
 // jhipster-needle-add-entity-service-to-entities-component-import - JHipster will import entities services here
 
 @Component
@@ -14,5 +15,6 @@ export default class Entities extends Vue {
   @Provide('locationService') private locationService = () => new LocationService();
   @Provide('vehicleService') private vehicleService = () => new VehicleService();
   @Provide('tripService') private tripService = () => new TripService();
+  @Provide('reservationService') private reservationService = () => new ReservationService();
   // jhipster-needle-add-entity-service-to-entities-component - JHipster will import entities services here
 }
