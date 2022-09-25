@@ -2,7 +2,7 @@
   "hcpgatewayApp": {
     "reservationLocation": {
       "home": {
-        "title": "Locations",
+        "title": "Meus Locais",
         "refreshListLabel": "Atualizar lista",
         "createLabel": "Criar novo Location",
         "createOrEditLabel": "Criar ou editar Location",
@@ -15,20 +15,20 @@
         "title": "Location"
       },
       "id": "ID",
-      "name": "Name",
-      "zipcode": "Zipcode",
-      "address": "Address",
-      "number": "Number",
-      "city": "City",
-      "state": "State",
-      "type": "Type"
+      "name": "Nome",
+      "zipcode": "CEP",
+      "address": "Endereço",
+      "number": "Número",
+      "city": "Cidade",
+      "state": "Estado",
+      "type": "Tipo"
     }
   },
   "reservationApp": {
     "reservationLocation": {
-      "created": "Um novo Location foi criado com o identificador {{ param }}",
-      "updated": "Um Location foi atualizado com o identificador {{ param }}",
-      "deleted": "Um Location foi excluído com o identificador {{ param }}"
+      "created": "Local foi criado com sucesso.",
+      "updated": "Local atualizado com sucesso.",
+      "deleted": "Local excluído com sucesso."
     }
   }
 }

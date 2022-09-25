@@ -2,7 +2,7 @@
   "hcpgatewayApp": {
     "reservationTrip": {
       "home": {
-        "title": "Trips",
+        "title": "Minhas Viagens",
         "refreshListLabel": "Atualizar lista",
         "createLabel": "Criar novo Trip",
         "createOrEditLabel": "Criar ou editar Trip",
@@ -16,15 +16,15 @@
       },
       "id": "ID",
       "driverLogin": "Driver Login",
-      "whenDateTime": "When Date Time",
+      "whenDateTime": "Quando?",
       "destinationType": "Destination Type",
       "availableSeats": "Available Seats",
-      "price": "Price",
+      "price": "Preço",
       "meetingPoint": "Meeting Point",
       "createdAt": "Created At",
-      "vehicle": "Vehicle",
-      "from": "From",
-      "to": "To"
+      "vehicle": "Veículo",
+      "from": "De",
+      "to": "Para"
     }
   },
   "reservationApp": {
