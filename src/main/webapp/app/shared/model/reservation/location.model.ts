@@ -9,6 +9,7 @@ export interface ILocation {
   city?: string;
   state?: string;
   type?: LocationType | null;
+  locationUserId?: number;
 }
 
 export class Location implements ILocation {
@@ -21,6 +22,7 @@ export class Location implements ILocation {
     public number?: string,
     public city?: string,
     public state?: string,
-    public type?: LocationType | null
+    public type?: LocationType | null,
+    public locationUserId?: number
   ) {}
 }

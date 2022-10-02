@@ -5,12 +5,14 @@ import { ILocation } from '@/shared/model/reservation/location.model';
 import LocationService from './location.service';
 import AlertService from '@/shared/alert/alert.service';
 import { LocationType } from '@/shared/model/enumerations/location-type.model';
+import LocationUserService from '../location-user/location-user.service';
 
 @Component({
   mixins: [Vue2Filters.mixin],
 })
 export default class Location extends Vue {
   @Inject('locationService') private locationService: () => LocationService;
+  @Inject('locationUserService') private locationUserService: () => LocationUserService
   @Inject('alertService') private alertService: () => AlertService;
 
   private removeId: number = null;
@@ -63,14 +65,14 @@ export default class Location extends Vue {
   }
 
   public prepareRemove(instance: ILocation): void {
-    this.removeId = instance.id;
+    this.removeId = instance.locationUserId;
     if (<any>this.$refs.removeEntity) {
       (<any>this.$refs.removeEntity).show();
     }
   }
 
   public removeLocation(): void {
-    this.locationService()
+    this.locationUserService()
       .delete(this.removeId)
       .then(() => {
         const message = this.$t('reservationApp.reservationLocation.deleted', { param: this.removeId });
