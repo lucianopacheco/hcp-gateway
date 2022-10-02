@@ -7,15 +7,29 @@
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="$t('hcpgatewayApp.reservationLocation.home.refreshListLabel')">Refresh List</span>
         </button>
-        <router-link :to="{ name: 'LocationCreate' }" custom v-slot="{ navigate }">
+        <router-link :to="{ name: 'LocationCreateCondominium' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
-            id="jh-create-entity"
+            id="jh-create-entity-condominium"
             data-cy="entityCreateButton"
-            class="btn btn-primary jh-create-entity create-location"
+            :disabled="isCondominiumLocationCreated"
+            class="btn btn-primary jh-create-entity create-location mr-2"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span v-text="$t('hcpgatewayApp.reservationLocation.home.createLabel')"> Create a new Location </span>
+            <span v-text="$t('hcpgatewayApp.reservationLocation.home.createCondominium')"> Create a new Location </span>
+          </button>
+        </router-link>
+
+        <router-link :to="{ name: 'LocationCreateWork' }" custom v-slot="{ navigate }">
+          <button
+            @click="navigate"
+            id="jh-create-entity-work"
+            data-cy="entityCreateButton"
+            :disabled="isWorkLocationCreated"
+            class="btn btn-success jh-create-entity create-location"
+          >
+            <font-awesome-icon icon="plus"></font-awesome-icon>
+            <span v-text="$t('hcpgatewayApp.reservationLocation.home.createWork')"> Create a new Location </span>
           </button>
         </router-link>
       </div>

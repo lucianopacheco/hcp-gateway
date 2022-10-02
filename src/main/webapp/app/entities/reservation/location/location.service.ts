@@ -20,6 +20,19 @@ export default class LocationService {
     });
   }
 
+  public findByZipcodeAndNumber(zipcode: string, number: number): Promise<ILocation> {
+    return new Promise<ILocation>((resolve, reject) => {
+      axios
+        .get(`${baseApiUrl}/zipcode/${zipcode}/number/${number}`)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
   public retrieve(paginationQuery?: any): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios

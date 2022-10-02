@@ -4,6 +4,7 @@ import { ILocation } from '@/shared/model/reservation/location.model';
 
 import LocationService from './location.service';
 import AlertService from '@/shared/alert/alert.service';
+import { LocationType } from '@/shared/model/enumerations/location-type.model';
 
 @Component({
   mixins: [Vue2Filters.mixin],
@@ -112,6 +113,18 @@ export default class Location extends Vue {
     this.propOrder = propOrder;
     this.reverse = !this.reverse;
     this.transition();
+  }
+
+  get isCondominiumLocationCreated(): boolean {
+    if (this.locations) {
+      return this.locations.filter(loc => loc.type === LocationType.HOME).length > 0;
+    }
+  }
+
+  get isWorkLocationCreated(): boolean {
+    if (this.locations) {
+      return this.locations.filter(loc => loc.type === LocationType.LOCATION).length > 0;
+    }
   }
 
   public closeDialog(): void {

@@ -1,3 +1,4 @@
+import { LocationType } from '@/shared/model/enumerations/location-type.model';
 import { Authority } from '@/shared/security/authority';
 /* tslint:disable */
 // prettier-ignore
@@ -72,8 +73,21 @@ export default {
     {
       path: 'location/new',
       name: 'LocationCreate',
+      params: LocationType.HOME,
       component: LocationUpdate,
       meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'location/new/condominium',
+      name: 'LocationCreateCondominium',
+      component: LocationUpdate,
+      meta: { authorities: [Authority.USER], locationType: LocationType.HOME },
+    },
+    {
+      path: 'location/new/work',
+      name: 'LocationCreateWork',
+      component: LocationUpdate,
+      meta: { authorities: [Authority.USER], locationType: LocationType.LOCATION },
     },
     {
       path: 'location/:locationId/edit',

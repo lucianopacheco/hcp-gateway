@@ -44,10 +44,15 @@ export default class LocationUpdate extends Vue {
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
+      vm.setLocationType(to.meta.locationType);
       if (to.params.locationId) {
         vm.retrieveLocation(to.params.locationId);
       }
     });
+  }
+
+  public setLocationType(type: LocationType): void {
+    this.location.type = type;
   }
 
   created(): void {
@@ -111,6 +116,28 @@ export default class LocationUpdate extends Vue {
       })
       .catch(error => {
         this.alertService().showHttpError(this, error.response);
+      });
+  }
+
+  public retrieveLocationByZipcodeAndNumber(): void {
+
+    if (!this.location.zipcode || !this.location.number) {
+      return;
+    }
+
+    this.locationService()
+      .findByZipcodeAndNumber(this.location.zipcode, this.location.number)
+      .then(res => {
+        this.location = res;
+        this.location.existedId = res.id;
+        this.location.id = null;
+      })
+      .catch(error => {
+        this.location.id = null;
+        this.location.name = "";
+        this.location.address = "";
+        this.location.city = "";
+        this.location.state = "";
       });
   }
 
