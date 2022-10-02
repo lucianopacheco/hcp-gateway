@@ -34,6 +34,12 @@ const Reservation = () => import('@/entities/reservation/reservation/reservation
 const ReservationUpdate = () => import('@/entities/reservation/reservation/reservation-update.vue');
 // prettier-ignore
 const ReservationDetails = () => import('@/entities/reservation/reservation/reservation-details.vue');
+// prettier-ignore
+const LocationUser = () => import('@/entities/reservation/location-user/location-user.vue');
+// prettier-ignore
+const LocationUserUpdate = () => import('@/entities/reservation/location-user/location-user-update.vue');
+// prettier-ignore
+const LocationUserDetails = () => import('@/entities/reservation/location-user/location-user-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default {
@@ -171,6 +177,30 @@ export default {
       path: 'reservation/:reservationId/view',
       name: 'ReservationView',
       component: ReservationDetails,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'location-user',
+      name: 'LocationUser',
+      component: LocationUser,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'location-user/new',
+      name: 'LocationUserCreate',
+      component: LocationUserUpdate,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'location-user/:locationUserId/edit',
+      name: 'LocationUserEdit',
+      component: LocationUserUpdate,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'location-user/:locationUserId/view',
+      name: 'LocationUserView',
+      component: LocationUserDetails,
       meta: { authorities: [Authority.USER] },
     },
     // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

@@ -1,0 +1,30 @@
+{
+  "hcpgatewayApp": {
+    "reservationLocationUser": {
+      "home": {
+        "title": "Location Users",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Location User",
+        "createOrEditLabel": "Criar ou editar Location User",
+        "notFound": "Nenhum Location User encontrado"
+      },
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Location User {{ id }}?"
+      },
+      "detail": {
+        "title": "Location User"
+      },
+      "id": "ID",
+      "login": "Login",
+      "locationType": "Location Type",
+      "location": "Location"
+    }
+  },
+  "reservationApp": {
+    "reservationLocationUser": {
+      "created": "Um novo Location User foi criado com o identificador {{ param }}",
+      "updated": "Um Location User foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Location User foi excluído com o identificador {{ param }}"
+    }
+  }
+}
