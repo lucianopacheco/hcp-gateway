@@ -100,7 +100,7 @@
                 data-cy="name"
                 :class="{ valid: !$v.location.name.$invalid, invalid: $v.location.name.$invalid }"
                 v-model="$v.location.name.$model"
-                :disabled="location.id"
+                :disabled="location.existedId"
                 required
               />
               <div v-if="$v.location.name.$anyDirty && $v.location.name.$invalid">
@@ -121,7 +121,7 @@
                 id="location-address"
                 data-cy="address"
                 :class="{ valid: !$v.location.address.$invalid, invalid: $v.location.address.$invalid }"
-                :disabled="location.id"
+                :disabled="location.existedId"
                 v-model="$v.location.address.$model"
               />
             </div>
@@ -137,7 +137,7 @@
                   data-cy="city"
                   :class="{ valid: !$v.location.city.$invalid, invalid: $v.location.city.$invalid }"
                   v-model="$v.location.city.$model"
-                  :disabled="location.id"
+                  :disabled="location.existedId"
                   required
                 />
                 <div v-if="$v.location.city.$anyDirty && $v.location.city.$invalid">
@@ -156,7 +156,7 @@
                   data-cy="state"
                   :class="{ valid: !$v.location.state.$invalid, invalid: $v.location.state.$invalid }"
                   v-model="$v.location.state.$model"
-                  :disabled="location.id"
+                  :disabled="location.existedId"
                   required
                 />
                 <div v-if="$v.location.state.$anyDirty && $v.location.state.$invalid">
