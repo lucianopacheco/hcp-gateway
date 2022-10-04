@@ -16,6 +16,10 @@
       <font-awesome-icon icon="asterisk" />
       <span v-text="$t('global.menu.entities.reservationTrip')">Trip</span>
     </b-dropdown-item>
+     <b-dropdown-item to="/trip-driver" v-if="hasAnyAuthority('ROLE_DRIVER') && authenticated">
+      <font-awesome-icon icon="asterisk" />
+      <span v-text="$t('global.menu.entities.reservationTripDriver')">Trip</span>
+    </b-dropdown-item>
     <b-dropdown-item to="/reservation">
       <font-awesome-icon icon="asterisk" />
       <span v-text="$t('global.menu.entities.reservationReservation')">Reservation</span>

@@ -12,6 +12,7 @@
         "reservationLocation": "Location",
         "reservationVehicle": "Vehicle",
         "reservationTrip": "Trip",
+        "reservationTripDriver": "Trip (Driver)",
         "reservationReservation": "Reservation",
         "reservationLocationUser": "Location User",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"

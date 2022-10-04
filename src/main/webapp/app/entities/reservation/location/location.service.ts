@@ -20,7 +20,7 @@ export default class LocationService {
     });
   }
 
-  public findByZipcodeAndNumber(zipcode: string, number: number): Promise<ILocation> {
+  public findByZipcodeAndNumber(zipcode: string, number: string): Promise<ILocation> {
     return new Promise<ILocation>((resolve, reject) => {
       axios
         .get(`${baseApiUrl}/zipcode/${zipcode}/number/${number}`)

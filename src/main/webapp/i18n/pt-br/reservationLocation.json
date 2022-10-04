@@ -7,7 +7,7 @@
         "createLabel": "Cadastrar",
         "createCondominium": "Cadastrar Condomínio",
         "createWork": "Cadastrar Local de Trabalho",
-        "createOrEditLabel": "Criar ou editar Local",
+        "editLocation": "Editar Localização",
         "notFound": "Nenhum local encontrado. Realize o cadastrado do seu condomínio e de seu local de trabalho."
       },
       "delete": {

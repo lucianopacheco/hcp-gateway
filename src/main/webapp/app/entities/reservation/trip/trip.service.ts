@@ -33,6 +33,19 @@ export default class TripService {
     });
   }
 
+  public retrieveByLocations(homeLocationId: number, workLocationId: number, paginationQuery?: any): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .get(baseApiUrl + `/homeLocation/${homeLocationId}/workLocation/${workLocationId}?${buildPaginationQueryOpts(paginationQuery)}`)
+        .then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
   public delete(id: number): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios

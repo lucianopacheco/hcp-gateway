@@ -46,7 +46,7 @@ export default class LocationUpdate extends Vue {
     next(vm => {
       vm.setLocationType(to.meta.locationType);
       if (to.params.locationId) {
-        vm.retrieveLocation(to.params.locationId);
+        vm.retrieveLocation(to.params.locationId, to.meta.locationType);
       }
     });
   }
@@ -108,11 +108,12 @@ export default class LocationUpdate extends Vue {
     }
   }
 
-  public retrieveLocation(locationId): void {
+  public retrieveLocation(locationId: number, type: LocationType): void {
     this.locationService()
       .find(locationId)
       .then(res => {
         this.location = res;
+        this.location.type = type;
       })
       .catch(error => {
         this.alertService().showHttpError(this, error.response);
@@ -128,9 +129,12 @@ export default class LocationUpdate extends Vue {
     this.locationService()
       .findByZipcodeAndNumber(this.location.zipcode, this.location.number)
       .then(res => {
-        this.location = res;
         this.location.existedId = res.id;
         this.location.id = null;
+        this.location.name = res.name;
+        this.location.address = res.address;
+        this.location.city = res.city;
+        this.location.state = res.state;
       })
       .catch(error => {
         this.location.id = null;

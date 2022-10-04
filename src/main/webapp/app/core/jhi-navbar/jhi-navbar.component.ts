@@ -74,4 +74,8 @@ export default class JhiNavbar extends Vue {
   public get inProduction(): boolean {
     return this.$store.getters.activeProfiles.indexOf('prod') > -1;
   }
+
+  public get username(): string {
+    return this.$store.getters.account?.login ?? '';
+  }
 }

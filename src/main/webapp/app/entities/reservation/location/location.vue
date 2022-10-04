@@ -91,7 +91,7 @@
             <td v-text="$t('hcpgatewayApp.LocationType.' + location.type)">{{ location.type }}</td>
             <td class="text-right">
               <div class="btn-group">
-                <router-link :to="{ name: 'LocationEdit', params: { locationId: location.id } }" custom v-slot="{ navigate }">
+                <router-link :to="{ name: 'LocationEdit', params: { locationId: location.id, locationType: 'location.type' } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline" v-text="$t('entity.action.edit')">Edit</span>

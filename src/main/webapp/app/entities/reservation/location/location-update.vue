@@ -3,7 +3,7 @@
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2
-          v-show="location.type == 'HOME'"
+          v-show="location.type == 'HOME' && !location.id"
           id="hcpgatewayApp.reservationLocation.home.createOrEditLabel"
           data-cy="LocationCreateUpdateHeading"
           v-text="$t('hcpgatewayApp.reservationLocation.home.createCondominium')"
@@ -11,7 +11,7 @@
           Create or edit a Location
         </h2>
          <h2
-          v-show="location.type == 'LOCATION'"
+          v-show="location.type == 'LOCATION' && !location.id"
           id="hcpgatewayApp.reservationLocation.home.createOrEditLabel"
           data-cy="LocationCreateUpdateHeading"
           v-text="$t('hcpgatewayApp.reservationLocation.home.createWork')"
@@ -19,8 +19,17 @@
           Create or edit a Location
         </h2>
 
+        <h2
+          v-show="location.id"
+          id="hcpgatewayApp.reservationLocation.home.createOrEditLabel"
+          data-cy="LocationCreateUpdateHeading"
+          v-text="$t('hcpgatewayApp.reservationLocation.home.editLocation')"
+        >
+          Create or edit a Location
+        </h2>
+
         <div>
-          <div class="form-group">
+          <div class="form-group" v-show="false">
             <label class="form-control-label" v-text="$t('hcpgatewayApp.reservationLocation.type')" for="location-type">Type</label>
             <select
               class="form-control"
@@ -109,7 +118,7 @@
                 </small>
               </div>
             </div>
-          
+
             <div class="form-group">
               <label class="form-control-label" v-text="$t('hcpgatewayApp.reservationLocation.address')" for="location-address"
                 >Address</label

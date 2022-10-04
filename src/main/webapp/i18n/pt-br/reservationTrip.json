@@ -2,11 +2,11 @@
   "hcpgatewayApp": {
     "reservationTrip": {
       "home": {
-        "title": "Minhas Viagens",
+        "title": "Viagens",
         "refreshListLabel": "Atualizar lista",
         "createLabel": "Criar novo Trip",
         "createOrEditLabel": "Criar ou editar Trip",
-        "notFound": "Nenhum Trip encontrado"
+        "notFound": "Nenhuma viagem encontrada"
       },
       "delete": {
         "question": "Tem certeza de que deseja excluir Trip {{ id }}?"

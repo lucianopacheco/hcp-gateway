@@ -25,8 +25,18 @@ export default class Trip extends Vue {
 
   public isFetching = false;
 
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      if (to.path == '/trip-driver') {
+        vm.retrieveAllTrips();
+      } else {
+        vm.retrieveAllTripsByLocations();
+      }
+    });
+  }
+
   public mounted(): void {
-    this.retrieveAllTrips();
+    //this.retrieveAllTrips();
   }
 
   public clear(): void {
@@ -43,6 +53,29 @@ export default class Trip extends Vue {
     };
     this.tripService()
       .retrieve(paginationQuery)
+      .then(
+        res => {
+          this.trips = res.data;
+          this.totalItems = Number(res.headers['x-total-count']);
+          this.queryCount = this.totalItems;
+          this.isFetching = false;
+        },
+        err => {
+          this.isFetching = false;
+          this.alertService().showHttpError(this, err.response);
+        }
+      );
+  }
+
+  public retrieveAllTripsByLocations(): void {
+    this.isFetching = true;
+    const paginationQuery = {
+      page: this.page - 1,
+      size: this.itemsPerPage,
+      sort: this.sort(),
+    };
+    this.tripService()
+      .retrieveByLocations(1001, 10, paginationQuery)
       .then(
         res => {
           this.trips = res.data;
