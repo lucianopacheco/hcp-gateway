@@ -1,5 +1,20 @@
 package br.com.hcp.gateway.service;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Pageable;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import br.com.hcp.gateway.config.Constants;
 import br.com.hcp.gateway.domain.Authority;
 import br.com.hcp.gateway.domain.User;
@@ -9,18 +24,6 @@ import br.com.hcp.gateway.security.AuthoritiesConstants;
 import br.com.hcp.gateway.security.SecurityUtils;
 import br.com.hcp.gateway.service.dto.AdminUserDTO;
 import br.com.hcp.gateway.service.dto.UserDTO;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.temporal.ChronoUnit;
-import java.util.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Pageable;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
@@ -130,9 +133,9 @@ public class UserService {
                     newUser.setImageUrl(userDTO.getImageUrl());
                     newUser.setLangKey(userDTO.getLangKey());
                     // new user is not active
-                    newUser.setActivated(false);
+                    newUser.setActivated(true);
                     // new user gets registration key
-                    newUser.setActivationKey(RandomUtil.generateActivationKey());
+                    //newUser.setActivationKey(RandomUtil.generateActivationKey());
                     return newUser;
                 })
             )

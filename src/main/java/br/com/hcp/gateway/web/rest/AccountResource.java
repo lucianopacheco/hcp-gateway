@@ -1,23 +1,34 @@
 package br.com.hcp.gateway.web.rest;
 
+import java.security.Principal;
+import java.util.Objects;
+
+import javax.validation.Valid;
+
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ServerWebExchange;
+
 import br.com.hcp.gateway.repository.UserRepository;
 import br.com.hcp.gateway.security.SecurityUtils;
 import br.com.hcp.gateway.service.MailService;
 import br.com.hcp.gateway.service.UserService;
 import br.com.hcp.gateway.service.dto.AdminUserDTO;
 import br.com.hcp.gateway.service.dto.PasswordChangeDTO;
-import br.com.hcp.gateway.web.rest.errors.*;
+import br.com.hcp.gateway.web.rest.errors.EmailAlreadyUsedException;
+import br.com.hcp.gateway.web.rest.errors.InvalidPasswordException;
+import br.com.hcp.gateway.web.rest.errors.LoginAlreadyUsedException;
 import br.com.hcp.gateway.web.rest.vm.KeyAndPasswordVM;
 import br.com.hcp.gateway.web.rest.vm.ManagedUserVM;
-import java.security.Principal;
-import java.util.Objects;
-import javax.validation.Valid;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
@@ -29,7 +40,9 @@ public class AccountResource {
 
     private static class AccountResourceException extends RuntimeException {
 
-        private AccountResourceException(String message) {
+		private static final long serialVersionUID = 732773751151848170L;
+
+		private AccountResourceException(String message) {
             super(message);
         }
     }
@@ -62,7 +75,7 @@ public class AccountResource {
         if (isPasswordLengthInvalid(managedUserVM.getPassword())) {
             throw new InvalidPasswordException();
         }
-        return userService.registerUser(managedUserVM, managedUserVM.getPassword()).doOnSuccess(mailService::sendActivationEmail).then();
+        return userService.registerUser(managedUserVM, managedUserVM.getPassword()).then();
     }
 
     /**
