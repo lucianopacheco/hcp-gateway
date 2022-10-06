@@ -104,7 +104,8 @@
           <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="user" />
             <span class="no-bold" v-show="!authenticated" v-text="$t('global.menu.account.main')"> Account </span>
-            <span class="no-bold" v-show="authenticated"> {{ username }} </span>
+            <span class="no-bold"  v-show="authenticated"> {{ username }} </span>
+            <span style="color: #c3e6cb">{{ userRole }}</span>
           </span>
           <b-dropdown-item data-cy="settings" to="/account/settings" tag="b-dropdown-item" v-if="authenticated" active-class="active">
             <font-awesome-icon icon="wrench" />

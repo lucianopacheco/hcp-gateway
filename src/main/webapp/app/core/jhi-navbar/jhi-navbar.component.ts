@@ -78,4 +78,28 @@ export default class JhiNavbar extends Vue {
   public get username(): string {
     return this.$store.getters.account?.login ?? '';
   }
+
+  public get userRole(): string {
+
+    if (!this.authenticated) {
+      return;
+    }
+
+    let role = "";
+
+    if (this.hasAnyAuthority(['ROLE_ADMIN'])) {
+      return "(ADMIN)";
+    }
+    if (this.hasAnyAuthority(['ROLE_USER'])) {
+      role = "(USER) ";
+    }
+    if (this.hasAnyAuthority(['ROLE_PASSENGER'])) {
+      role += "(PASSAGEIRO) ";
+    }
+    if (this.hasAnyAuthority(['ROLE_DRIVER'])) {
+      role += "(MOTORISTA)";
+    }
+
+    return role;
+  }
 }
