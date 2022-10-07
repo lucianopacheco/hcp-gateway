@@ -6,7 +6,7 @@
         "refreshListLabel": "Atualizar lista",
         "createLabel": "Criar novo Reservation",
         "createOrEditLabel": "Criar ou editar Reservation",
-        "notFound": "Nenhum reserva encontrada"
+        "notFound": "Nenhuma reserva encontrada."
       },
       "delete": {
         "question": "Tem certeza de que deseja excluir Reservation {{ id }}?"

@@ -11,6 +11,9 @@
       "delete": {
         "question": "Tem certeza de que deseja excluir Trip {{ id }}?"
       },
+      "reserve": {
+        "question": "Confirma a reserva desta viagem?"
+      },
       "detail": {
         "title": "Trip"
       },

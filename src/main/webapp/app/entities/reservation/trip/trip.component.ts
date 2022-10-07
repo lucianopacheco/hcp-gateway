@@ -4,6 +4,9 @@ import { ITrip } from '@/shared/model/reservation/trip.model';
 
 import TripService from './trip.service';
 import AlertService from '@/shared/alert/alert.service';
+import ReservationService from '../reservation/reservation.service';
+import { Reservation } from '@/shared/model/reservation/reservation.model';
+import { ReservationStatus } from '@/shared/model/enumerations/reservation-status.model';
 
 @Component({
   mixins: [Vue2Filters.mixin],
@@ -11,6 +14,7 @@ import AlertService from '@/shared/alert/alert.service';
 export default class Trip extends Vue {
   @Inject('tripService') private tripService: () => TripService;
   @Inject('alertService') private alertService: () => AlertService;
+  @Inject('reservationService') private reservationService: () => ReservationService;
 
   private removeId: number = null;
   public itemsPerPage = 20;
@@ -22,6 +26,8 @@ export default class Trip extends Vue {
   public totalItems = 0;
 
   public trips: ITrip[] = [];
+  public tripToReservation: ITrip;
+  public reservation: Reservation;
 
   public isFetching = false;
 
@@ -101,6 +107,13 @@ export default class Trip extends Vue {
     }
   }
 
+  public prepareReservation(instance: ITrip): void {
+    this.tripToReservation = instance;
+    if (<any>this.$refs.reserveEntity) {
+      (<any>this.$refs.reserveEntity).show();
+    }
+  }
+
   public removeTrip(): void {
     this.tripService()
       .delete(this.removeId)
@@ -118,6 +131,33 @@ export default class Trip extends Vue {
         this.closeDialog();
       })
       .catch(error => {
+        this.alertService().showHttpError(this, error.response);
+      });
+  }
+
+  public reserveTrip(): void {
+    this.reservation = new Reservation(null, this.username, ReservationStatus.CONFIRMED, new Date(), 
+      new Date(), this.tripToReservation);
+
+    this.reservationService()
+      .create(this.reservation)
+      .then(() => {
+        const message = this.$t('reservationApp.reservationTrip.created', { param: this.removeId });
+        this.$bvToast.toast(message.toString(), {
+          toaster: 'b-toaster-top-center',
+          title: 'Info',
+          variant: 'success',
+          solid: true,
+          autoHideDelay: 5000,
+        });
+        this.tripToReservation = null;
+        this.closeReserveDialog();
+        this.$router.push("/reservation");
+      })
+      .catch(error => {
+        this.closeReserveDialog();
+        console.log(error);
+        console.log(error.response);
         this.alertService().showHttpError(this, error.response);
       });
   }
@@ -149,5 +189,13 @@ export default class Trip extends Vue {
 
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
+  }
+
+  public closeReserveDialog(): void {
+    (<any>this.$refs.reserveEntity).hide();
+  }
+
+  public get username(): string {
+    return this.$store.getters.account?.login ?? '';
   }
 }

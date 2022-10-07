@@ -121,6 +121,16 @@
                   <font-awesome-icon icon="times"></font-awesome-icon>
                   <span class="d-none d-md-inline" v-text="$t('entity.action.delete')">Delete</span>
                 </b-button>
+                <b-button
+                  v-on:click="prepareReservation(trip)"
+                  variant="success"
+                  class="btn btn-sm"
+                  data-cy="entityReservationButton"
+                  v-b-modal.reserveEntity
+                >
+                  <font-awesome-icon icon="lock"></font-awesome-icon>
+                  <span class="d-none d-md-inline" v-text="$t('entity.action.reserve')">Reserve</span>
+                </b-button>
               </div>
             </td>
           </tr>
@@ -149,6 +159,32 @@
           v-on:click="removeTrip()"
         >
           Delete
+        </button>
+      </div>
+    </b-modal>
+
+    <b-modal ref="reserveEntity" id="reserveEntity">
+      <span slot="modal-title"
+        ><span id="hcpgatewayApp.reservationTrip.reserve.question" data-cy="tripReserveDialogHeading" v-text="$t('entity.reserve.title')"
+          >Confirm reserve operation</span
+        ></span
+      >
+      <div class="modal-body">
+        <p id="jhi-delete-trip-heading" v-text="$t('hcpgatewayApp.reservationTrip.reserve.question')">
+          Are you sure you want to reserve this Trip?
+        </p>
+      </div>
+      <div slot="modal-footer">
+        <button type="button" class="btn btn-secondary" v-text="$t('entity.action.cancel')" v-on:click="closeReserveDialog()">Cancel</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="jhi-confirm-reserve-trip"
+          data-cy="entityConfirmReserveButton"
+          v-text="$t('entity.action.reserve')"
+          v-on:click="reserveTrip()"
+        >
+          Reserve
         </button>
       </div>
     </b-modal>

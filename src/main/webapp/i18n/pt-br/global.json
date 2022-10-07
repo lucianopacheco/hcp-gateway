@@ -106,7 +106,8 @@
       "edit": "Editar",
       "open": "Abrir",
       "save": "Salvar",
-      "view": "Visualizar"
+      "view": "Visualizar",
+      "reserve": "Reservar"
     },
     "detail": {
       "field": "Campo",
@@ -114,6 +115,9 @@
     },
     "delete": {
       "title": "Confirme a exclusão"
+    },
+    "reserve": {
+      "title": "Reservar viagem"
     },
     "validation": {
       "required": "O campo é obrigatório.",
@@ -141,6 +145,7 @@
     "idnull": "Identificador inválido",
     "idinvalid": "Invalid Id",
     "idnotfound": "ID cannot be found",
+    "availableSeats": "Assento não disponível para esta viagem",
     "file": {
       "could.not.extract": "Could not extract file",
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
