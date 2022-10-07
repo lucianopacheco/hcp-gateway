@@ -2,5 +2,5 @@ export enum Authority {
   ADMIN = 'ROLE_ADMIN',
   USER = 'ROLE_USER',
   DRIVER = 'ROLE_DRIVER',
-  PASSANGER = 'ROLE_PASSENGER'
+  PASSENGER = 'ROLE_PASSENGER'
 }
