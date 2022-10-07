@@ -135,7 +135,7 @@ export default {
       path: 'trip',
       name: 'Trip',
       component: Trip,
-      meta: { authorities: [Authority.PASSANGER] },
+      meta: { authorities: [Authority.PASSENGER] },
     },
     {
       path: 'trip-driver',
