@@ -8,7 +8,7 @@
       <font-awesome-icon icon="asterisk" />
       <span v-text="$t('global.menu.entities.reservationLocation')">Location</span>
     </b-dropdown-item>
-    <b-dropdown-item to="/vehicle" v-if="hasAnyAuthority('ROLE_DRIVER') && authenticated">
+    <b-dropdown-item to="/vehicle" v-if="hasAuthority('ROLE_DRIVER') && authenticated">
       <font-awesome-icon icon="asterisk" />
       <span v-text="$t('global.menu.entities.reservationVehicle')">Vehicle</span>
     </b-dropdown-item>
@@ -16,7 +16,7 @@
       <font-awesome-icon icon="asterisk" />
       <span v-text="$t('global.menu.entities.reservationTrip')">Trip</span>
     </b-dropdown-item>
-     <b-dropdown-item to="/trip-driver" v-if="hasAnyAuthority('ROLE_DRIVER') && authenticated">
+     <b-dropdown-item to="/trip-driver" v-if="hasAuthority('ROLE_DRIVER') && authenticated">
       <font-awesome-icon icon="asterisk" />
       <span v-text="$t('global.menu.entities.reservationTripDriver')">Trip</span>
     </b-dropdown-item>

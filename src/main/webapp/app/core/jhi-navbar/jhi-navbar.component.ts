@@ -79,6 +79,11 @@ export default class JhiNavbar extends Vue {
     return this.$store.getters.account?.login ?? '';
   }
 
+  public hasAuthority(expectedRole: any): boolean {
+    const userAuthorities = this.$store.getters.account.authorities;
+    return userAuthorities.filter(auth => auth === expectedRole).length > 0;
+  }
+
   public get userRole(): string {
 
     if (!this.authenticated) {
@@ -87,16 +92,16 @@ export default class JhiNavbar extends Vue {
 
     let role = "";
 
-    if (this.hasAnyAuthority(['ROLE_ADMIN'])) {
+    if (this.hasAuthority('ROLE_ADMIN')) {
       return "(ADMIN)";
     }
-    if (this.hasAnyAuthority(['ROLE_USER'])) {
+    if (this.hasAuthority('ROLE_USER')) {
       role = "(USER) ";
     }
-    if (this.hasAnyAuthority(['ROLE_PASSENGER'])) {
+    if (this.hasAuthority('ROLE_PASSENGER')) {
       role += "(PASSAGEIRO) ";
     }
-    if (this.hasAnyAuthority(['ROLE_DRIVER'])) {
+    if (this.hasAuthority('ROLE_DRIVER')) {
       role += "(MOTORISTA)";
     }
 

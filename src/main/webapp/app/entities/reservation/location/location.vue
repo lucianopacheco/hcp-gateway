@@ -3,10 +3,6 @@
     <h2 id="page-heading" data-cy="LocationHeading">
       <span v-text="$t('hcpgatewayApp.reservationLocation.home.title')" id="location-heading">Locations</span>
       <div class="d-flex justify-content-end">
-        <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
-          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
-          <span v-text="$t('hcpgatewayApp.reservationLocation.home.refreshListLabel')">Refresh List</span>
-        </button>
         <router-link :to="{ name: 'LocationCreateCondominium' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
