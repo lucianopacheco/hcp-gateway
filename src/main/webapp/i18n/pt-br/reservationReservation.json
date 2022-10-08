@@ -8,6 +8,9 @@
         "createOrEditLabel": "Criar ou editar Reservation",
         "notFound": "Nenhuma reserva encontrada."
       },
+      "cancel": {
+        "question": "Deseja cancelar esta reserva?"
+      },
       "delete": {
         "question": "Tem certeza de que deseja excluir Reservation {{ id }}?"
       },

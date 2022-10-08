@@ -7,6 +7,7 @@ import AlertService from '@/shared/alert/alert.service';
 import ReservationService from '../reservation/reservation.service';
 import { Reservation } from '@/shared/model/reservation/reservation.model';
 import { ReservationStatus } from '@/shared/model/enumerations/reservation-status.model';
+import AccountService from '@/account/account.service';
 
 @Component({
   mixins: [Vue2Filters.mixin],
@@ -15,6 +16,7 @@ export default class Trip extends Vue {
   @Inject('tripService') private tripService: () => TripService;
   @Inject('alertService') private alertService: () => AlertService;
   @Inject('reservationService') private reservationService: () => ReservationService;
+  @Inject('accountService') private accountService: () => AccountService;
 
   private removeId: number = null;
   public itemsPerPage = 20;
@@ -30,14 +32,16 @@ export default class Trip extends Vue {
   public reservation: Reservation;
 
   public isFetching = false;
+  private hasAnyAuthorityValues = {};
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      if (to.path == '/trip-driver') {
-        vm.retrieveAllTrips();
-      } else {
-        vm.retrieveAllTripsByLocations();
-      }
+      // if (to.path == '/trip-driver') {
+      //   vm.retrieveAllTrips();
+      // } else {
+      //   vm.retrieveAllTripsByLocations();
+      // }
+      vm.retrieveAllTrips();
     });
   }
 
@@ -51,6 +55,15 @@ export default class Trip extends Vue {
   }
 
   public retrieveAllTrips(): void {
+    if (this.hasAnyAuthority(this.$store.getters.account?.authorities, 'ROLE_PASSENGER')) {
+      this.retrieveAllTripsByPassengerLocations();
+      return;
+    }
+
+    this.retrieveAllTripsByLoggedUser();
+  }
+
+  public retrieveAllTripsByLoggedUser(): void {
     this.isFetching = true;
     const paginationQuery = {
       page: this.page - 1,
@@ -73,7 +86,7 @@ export default class Trip extends Vue {
       );
   }
 
-  public retrieveAllTripsByLocations(): void {
+  public retrieveAllTripsByPassengerLocations(): void {
     this.isFetching = true;
     const paginationQuery = {
       page: this.page - 1,
@@ -197,5 +210,9 @@ export default class Trip extends Vue {
 
   public get username(): string {
     return this.$store.getters.account?.login ?? '';
+  }
+
+  public hasAnyAuthority(authorities: any, expectedRole: any): boolean {
+    return authorities.filter(auth => auth == expectedRole).length > 0;
   }
 }

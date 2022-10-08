@@ -109,6 +109,9 @@
       "view": "Visualizar",
       "reserve": "Reservar"
     },
+    "cancel": {
+       "title": "Cancelar"
+    },
     "detail": {
       "field": "Campo",
       "value": "Valor"

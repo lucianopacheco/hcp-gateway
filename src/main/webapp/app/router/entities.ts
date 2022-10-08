@@ -135,11 +135,11 @@ export default {
       path: 'trip',
       name: 'Trip',
       component: Trip,
-      meta: { authorities: [Authority.PASSENGER] },
+      meta: { authorities: [Authority.USER, Authority.PASSENGER] },
     },
     {
       path: 'trip-driver',
-      name: 'Trip',
+      name: 'TripDriver',
       component: Trip,
       meta: { authorities: [Authority.DRIVER] },
     },
