@@ -55,7 +55,7 @@ export default class Trip extends Vue {
   }
 
   public retrieveAllTrips(): void {
-    if (this.hasAnyAuthority(this.$store.getters.account?.authorities, 'ROLE_PASSENGER')) {
+    if (this.hasAuthority('ROLE_PASSENGER')) {
       this.retrieveAllTripsByPassengerLocations();
       return;
     }
@@ -212,7 +212,17 @@ export default class Trip extends Vue {
     return this.$store.getters.account?.login ?? '';
   }
 
-  public hasAnyAuthority(authorities: any, expectedRole: any): boolean {
-    return authorities.filter(auth => auth == expectedRole).length > 0;
+  public hasAuthority(expectedRole: any): boolean {
+    const userAuthorities = this.$store.getters.account.authorities;
+    return userAuthorities.filter(auth => auth === expectedRole).length > 0;
+  }
+
+  public hasAnyAuthority(authorities: any): boolean {
+    this.accountService()
+      .hasAnyAuthorityAndCheckAuth(authorities)
+      .then(value => {
+        this.hasAnyAuthorityValues[authorities] = value;
+      });
+    return this.hasAnyAuthorityValues[authorities] ?? false;
   }
 }

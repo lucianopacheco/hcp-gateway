@@ -18,18 +18,18 @@
         "title": "Reservation"
       },
       "id": "ID",
-      "passengerLogin": "Passenger Login",
+      "passengerLogin": "Passageiro",
       "status": "Status",
-      "createdAt": "Created At",
-      "updatedAt": "Updated At",
-      "trip": "Trip"
+      "createdAt": "Data de Criação",
+      "updatedAt": "Data de Atualização",
+      "trip": "Viagem"
     }
   },
   "reservationApp": {
     "reservationReservation": {
       "created": "Um novo Reservation foi criado com o identificador {{ param }}",
       "updated": "Um Reservation foi atualizado com o identificador {{ param }}",
-      "deleted": "Um Reservation foi excluído com o identificador {{ param }}"
+      "deleted": "Reserva {{ param}} foi cancelada com sucesso"
     }
   }
 }

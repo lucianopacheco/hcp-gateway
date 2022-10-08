@@ -7,7 +7,7 @@
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="$t('hcpgatewayApp.reservationTrip.home.refreshListLabel')">Refresh List</span>
         </button>
-        <router-link :to="{ name: 'TripCreate' }" custom v-slot="{ navigate }">
+        <router-link :to="{ name: 'TripCreate' }" custom v-slot="{ navigate }" v-show="hasAuthority('ROLE_DRIVER')">
           <button @click="navigate" id="jh-create-entity" data-cy="entityCreateButton" class="btn btn-primary jh-create-entity create-trip">
             <font-awesome-icon icon="plus"></font-awesome-icon>
             <span v-text="$t('hcpgatewayApp.reservationTrip.home.createLabel')"> Create a new Trip </span>
@@ -51,7 +51,7 @@
               <span v-text="$t('hcpgatewayApp.reservationTrip.meetingPoint')">Meeting Point</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'meetingPoint'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('createdAt')">
+            <th scope="row" v-on:click="changeOrder('createdAt')" v-show="false">
               <span v-text="$t('hcpgatewayApp.reservationTrip.createdAt')">Created At</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createdAt'"></jhi-sort-indicator>
             </th>
@@ -76,12 +76,12 @@
               <router-link :to="{ name: 'TripView', params: { tripId: trip.id } }">{{ trip.id }}</router-link>
             </td>
             <td>{{ trip.driverLogin }}</td>
-            <td>{{ trip.whenDateTime ? $d(Date.parse(trip.whenDateTime), 'short') : '' }}</td>
+            <td>{{ trip.whenDateTime | formatDate }}</td>
             <td v-text="$t('hcpgatewayApp.LocationType.' + trip.destinationType)">{{ trip.destinationType }}</td>
             <td>{{ trip.availableSeats }}</td>
             <td>{{ trip.price }}</td>
             <td>{{ trip.meetingPoint }}</td>
-            <td>{{ trip.createdAt ? $d(Date.parse(trip.createdAt), 'short') : '' }}</td>
+            <td v-show="false">{{ trip.createdAt ? $d(Date.parse(trip.createdAt), 'short') : '' }}</td>
             <td>
               <div v-if="trip.vehicle">
                 <router-link :to="{ name: 'VehicleView', params: { vehicleId: trip.vehicle.id } }">{{ trip.vehicle.model }}</router-link>
@@ -105,13 +105,13 @@
                     <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                   </button>
                 </router-link>
-                <router-link :to="{ name: 'TripEdit', params: { tripId: trip.id } }" custom v-slot="{ navigate }">
+                <router-link :to="{ name: 'TripEdit', params: { tripId: trip.id } }" custom v-slot="{ navigate }" v-show="hasAuthority('ROLE_DRIVER')">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline" v-text="$t('entity.action.edit')">Edit</span>
                   </button>
                 </router-link>
-                <b-button
+                <b-button v-show="hasAuthority('ROLE_DRIVER')"
                   v-on:click="prepareRemove(trip)"
                   variant="danger"
                   class="btn btn-sm"
@@ -121,7 +121,9 @@
                   <font-awesome-icon icon="times"></font-awesome-icon>
                   <span class="d-none d-md-inline" v-text="$t('entity.action.delete')">Delete</span>
                 </b-button>
-                <b-button
+
+                <b-button v-show="hasAuthority('ROLE_PASSENGER')"
+                  :disabled="trip.availableSeats == 0"
                   v-on:click="prepareReservation(trip)"
                   variant="success"
                   class="btn btn-sm"

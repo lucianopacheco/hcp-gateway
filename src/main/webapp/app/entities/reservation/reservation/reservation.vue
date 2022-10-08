@@ -61,9 +61,11 @@
               <router-link :to="{ name: 'ReservationView', params: { reservationId: reservation.id } }">{{ reservation.id }}</router-link>
             </td>
             <td>{{ reservation.passengerLogin }}</td>
-            <td v-text="$t('hcpgatewayApp.ReservationStatus.' + reservation.status)">{{ reservation.status }}</td>
-            <td>{{ reservation.createdAt ? $d(Date.parse(reservation.createdAt), 'short') : '' }}</td>
-            <td>{{ reservation.updatedAt ? $d(Date.parse(reservation.updatedAt), 'short') : '' }}</td>
+            <td><span :class="statusClass(reservation.status)" v-text="$t('hcpgatewayApp.ReservationStatus.' + reservation.status)">
+              {{ reservation.status }}</span>
+            </td>
+            <td>{{ reservation.createdAt | formatDate }}</td>
+            <td>{{ reservation.updatedAt | formatDate }}</td>
             <td>
               <div v-if="reservation.trip">
                 <router-link :to="{ name: 'TripView', params: { tripId: reservation.trip.id } }">{{ reservation.trip.id }}</router-link>
@@ -109,13 +111,13 @@
         </p>
       </div>
       <div slot="modal-footer">
-        <button type="button" class="btn btn-secondary" v-text="$t('entity.action.cancel')" v-on:click="closeDialog()">Cancel</button>
+        <button type="button" class="btn btn-secondary" v-text="$t('entity.action.no')" v-on:click="closeDialog()">Cancel</button>
         <button
           type="button"
           class="btn btn-primary"
           id="jhi-confirm-cancel-reservation"
           data-cy="entityConfirmDeleteButton"
-          v-text="$t('entity.action.cancel')"
+          v-text="$t('entity.action.yes')"
           v-on:click="removeReservation()"
         >
           Delete

@@ -4,6 +4,7 @@ import { IReservation } from '@/shared/model/reservation/reservation.model';
 
 import ReservationService from './reservation.service';
 import AlertService from '@/shared/alert/alert.service';
+import { ReservationStatus } from '@/shared/model/enumerations/reservation-status.model';
 
 @Component({
   mixins: [Vue2Filters.mixin],
@@ -116,5 +117,15 @@ export default class Reservation extends Vue {
 
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
+  }
+
+  public statusClass(status: ReservationStatus): string {
+    if (status === ReservationStatus.CONFIRMED) {
+      return "badge badge-success";
+    }
+
+    if (status === ReservationStatus.CANCELED) {
+      return "badge badge-danger";
+    }
   }
 }
