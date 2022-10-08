@@ -77,13 +77,8 @@
                     <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                   </button>
                 </router-link>
-                <router-link :to="{ name: 'ReservationEdit', params: { reservationId: reservation.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
-                    <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
-                    <span class="d-none d-md-inline" v-text="$t('entity.action.edit')">Edit</span>
-                  </button>
-                </router-link>
-                <b-button
+               
+                <b-button v-show="reservation.status == 'CONFIRMED'"
                   v-on:click="prepareRemove(reservation)"
                   variant="danger"
                   class="btn btn-sm"
@@ -91,7 +86,7 @@
                   v-b-modal.removeEntity
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
-                  <span class="d-none d-md-inline" v-text="$t('entity.action.delete')">Delete</span>
+                  <span class="d-none d-md-inline" v-text="$t('entity.action.cancel')">Cancel</span>
                 </b-button>
               </div>
             </td>
@@ -102,15 +97,15 @@
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
         ><span
-          id="hcpgatewayApp.reservationReservation.delete.question"
+          id="hcpgatewayApp.reservationReservation.cancel.question"
           data-cy="reservationDeleteDialogHeading"
-          v-text="$t('entity.delete.title')"
+          v-text="$t('entity.cancel.title')"
           >Confirm delete operation</span
         ></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-reservation-heading" v-text="$t('hcpgatewayApp.reservationReservation.delete.question', { id: removeId })">
-          Are you sure you want to delete this Reservation?
+        <p id="jhi-delete-reservation-heading" v-text="$t('hcpgatewayApp.reservationReservation.cancel.question', { id: removeId })">
+          Are you sure you want to cancel this Reservation?
         </p>
       </div>
       <div slot="modal-footer">
@@ -118,9 +113,9 @@
         <button
           type="button"
           class="btn btn-primary"
-          id="jhi-confirm-delete-reservation"
+          id="jhi-confirm-cancel-reservation"
           data-cy="entityConfirmDeleteButton"
-          v-text="$t('entity.action.delete')"
+          v-text="$t('entity.action.cancel')"
           v-on:click="removeReservation()"
         >
           Delete
