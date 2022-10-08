@@ -1,7 +1,7 @@
 {
   "home": {
     "title": "Bem-vindo!",
-    "subtitle": "Esta é a página principal",
+    "subtitle": "<p>Já pensou em compartilhar carona com o seu vizinho de condomíno? O <span style='font-weight: 700;'>Home Carpool</span> te ajuda a localizar as viagens frequentes que os vizinhos fazem.</p>",
     "logged": {
       "message": "Você está logado como \"{{username}}\"."
     },
