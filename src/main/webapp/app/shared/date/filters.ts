@@ -2,7 +2,7 @@ import Vue from 'vue';
 import dayjs from 'dayjs';
 
 export const DATE_FORMAT = 'YYYY-MM-DD';
-export const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm';
+export const DATE_TIME_FORMAT = 'DD/MM/YYYY HH:mm';
 
 export const DATE_TIME_LONG_FORMAT = 'YYYY-MM-DDTHH:mm';
 
