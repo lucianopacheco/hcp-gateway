@@ -24,7 +24,10 @@
         "sessions": "Sessões",
         "login": "Entrar",
         "logout": "Sair",
-        "register": "Criar uma conta"
+        "register": "Criar uma conta",
+        "change-to-driver": "Sou um motorista",
+        "change-to-passenger": "Sou um passageiro",
+        "role-changed": "Perfil atualizado com sucesso"
       },
       "admin": {
         "main": "Administração",

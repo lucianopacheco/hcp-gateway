@@ -4,6 +4,9 @@ import AccountService from '@/account/account.service';
 import TranslationService from '@/locale/translation.service';
 
 import EntitiesMenu from '@/entities/entities-menu.vue';
+import UserManagementService from '@/admin/user-management/user-management.service';
+import { IUser } from '@/shared/model/user.model';
+import AlertService from '@/shared/alert/alert.service';
 
 @Component({
   components: {
@@ -14,12 +17,14 @@ export default class JhiNavbar extends Vue {
   @Inject('loginService')
   private loginService: () => LoginService;
   @Inject('translationService') private translationService: () => TranslationService;
-
+  @Inject('userManagementService') private userManagementService: () => UserManagementService;
   @Inject('accountService') private accountService: () => AccountService;
+  @Inject('alertService') private alertService: () => AlertService;
   public version = 'v' + VERSION;
   private currentLanguage = this.$store.getters.currentLanguage;
   private languages: any = this.$store.getters.languages;
   private hasAnyAuthorityValues = {};
+  public userAccount: IUser;
 
   created() {
     this.translationService().refreshTranslation(this.currentLanguage);
@@ -79,6 +84,10 @@ export default class JhiNavbar extends Vue {
     return this.$store.getters.account?.login ?? '';
   }
 
+  public get userId(): string {
+    return this.$store.getters.account?.id ?? '';
+  }
+
   public hasAuthority(expectedRole: any): boolean {
     const userAuthorities = this.$store.getters.account.authorities;
     return userAuthorities.filter(auth => auth === expectedRole).length > 0;
@@ -96,7 +105,7 @@ export default class JhiNavbar extends Vue {
       return "(ADMIN)";
     }
     if (this.hasAuthority('ROLE_USER')) {
-      role = "(USER) ";
+      //role = "(USER) ";
     }
     if (this.hasAuthority('ROLE_PASSENGER')) {
       role += "(PASSAGEIRO) ";
@@ -106,5 +115,46 @@ export default class JhiNavbar extends Vue {
     }
 
     return role;
+  }
+
+  public updateRoleToDriver(): void {
+    this.userManagementService()
+      .getByLogin(this.username)
+      .then(res => {
+        this.userAccount = res.data;
+        this.userAccount.authorities = ['ROLE_USER', 'ROLE_DRIVER'];
+        this.saveUser();
+      });
+  }
+
+  public updateRoleToPassenger(): void {
+    this.userManagementService()
+      .getByLogin(this.username)
+      .then(res => {
+        this.userAccount = res.data;
+        this.userAccount.authorities = ['ROLE_USER', 'ROLE_PASSENGER'];
+        this.saveUser();
+      });
+  }
+
+  public saveUser(): void {
+    if (this.userAccount.id) {
+      this.userManagementService()
+        .update(this.userAccount)
+        .then(res => {
+          const message = "Perfil atualizado com sucesso!"
+          this.$bvToast.toast(message.toString(), {
+            toaster: 'b-toaster-top-center',
+            title: 'Info',
+            variant: 'success',
+            solid: true,
+            autoHideDelay: 5000,
+          });
+          this.accountService().retrieveAccount();
+        })
+        .catch(error => {
+          this.alertService().showHttpError(this, error.response);
+        });
+    }
   }
 }
