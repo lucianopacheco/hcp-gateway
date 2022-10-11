@@ -89,8 +89,8 @@ export default class JhiNavbar extends Vue {
   }
 
   public hasAuthority(expectedRole: any): boolean {
-    const userAuthorities = this.$store.getters.account.authorities;
-    return userAuthorities.filter(auth => auth === expectedRole).length > 0;
+    const userAuthorities = this.$store.getters.account?.authorities;
+    return userAuthorities?.filter(auth => auth === expectedRole).length > 0;
   }
 
   public get userRole(): string {
