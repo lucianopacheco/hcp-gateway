@@ -8,7 +8,7 @@
     <groupId>br.com.hcp.gateway</groupId>
     <artifactId>hcpgateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>Hcpgateway</name>
     <description>Description for hcpgateway</description>
 
@@ -1041,19 +1041,19 @@
         </profile>
         <profile>
             <id>prod</id>
-            <dependencies>
+             <dependencies>
                 <dependency>
-                    <groupId>org.testcontainers</groupId>
-                    <artifactId>postgresql</artifactId>
-                    <scope>test</scope>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-devtools</artifactId>
+                    <optional>true</optional>
                 </dependency>
                 <dependency>
-                    <groupId>org.postgresql</groupId>
-                    <artifactId>postgresql</artifactId>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
                 </dependency>
                 <dependency>
                     <groupId>io.r2dbc</groupId>
-                    <artifactId>r2dbc-postgresql</artifactId>
+                    <artifactId>r2dbc-h2</artifactId>
                 </dependency>
             </dependencies>
             <build>
