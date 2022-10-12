@@ -14,26 +14,7 @@
             <label for="id" v-text="$t('global.field.id')">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="trip.id" readonly />
           </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('hcpgatewayApp.reservationTrip.driverLogin')" for="trip-driverLogin"
-              >Driver Login</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              name="driverLogin"
-              id="trip-driverLogin"
-              data-cy="driverLogin"
-              :class="{ valid: !$v.trip.driverLogin.$invalid, invalid: $v.trip.driverLogin.$invalid }"
-              v-model="$v.trip.driverLogin.$model"
-              required
-            />
-            <div v-if="$v.trip.driverLogin.$anyDirty && $v.trip.driverLogin.$invalid">
-              <small class="form-text text-danger" v-if="!$v.trip.driverLogin.required" v-text="$t('entity.validation.required')">
-                This field is required.
-              </small>
-            </div>
-          </div>
+          
           <div class="form-group">
             <label class="form-control-label" v-text="$t('hcpgatewayApp.reservationTrip.whenDateTime')" for="trip-whenDateTime"
               >When Date Time</label
@@ -43,6 +24,7 @@
                 id="trip-whenDateTime"
                 data-cy="whenDateTime"
                 type="datetime-local"
+                pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}"
                 class="form-control"
                 name="whenDateTime"
                 :class="{ valid: !$v.trip.whenDateTime.$invalid, invalid: $v.trip.whenDateTime.$invalid }"
@@ -64,34 +46,7 @@
               </small>
             </div>
           </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('hcpgatewayApp.reservationTrip.destinationType')" for="trip-destinationType"
-              >Destination Type</label
-            >
-            <select
-              class="form-control"
-              name="destinationType"
-              :class="{ valid: !$v.trip.destinationType.$invalid, invalid: $v.trip.destinationType.$invalid }"
-              v-model="$v.trip.destinationType.$model"
-              id="trip-destinationType"
-              data-cy="destinationType"
-              required
-            >
-              <option
-                v-for="locationType in locationTypeValues"
-                :key="locationType"
-                v-bind:value="locationType"
-                v-bind:label="$t('hcpgatewayApp.LocationType.' + locationType)"
-              >
-                {{ locationType }}
-              </option>
-            </select>
-            <div v-if="$v.trip.destinationType.$anyDirty && $v.trip.destinationType.$invalid">
-              <small class="form-text text-danger" v-if="!$v.trip.destinationType.required" v-text="$t('entity.validation.required')">
-                This field is required.
-              </small>
-            </div>
-          </div>
+         
           <div class="form-group">
             <label class="form-control-label" v-text="$t('hcpgatewayApp.reservationTrip.availableSeats')" for="trip-availableSeats"
               >Available Seats</label
@@ -150,21 +105,7 @@
               v-model="$v.trip.meetingPoint.$model"
             />
           </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('hcpgatewayApp.reservationTrip.createdAt')" for="trip-createdAt">Created At</label>
-            <div class="d-flex">
-              <input
-                id="trip-createdAt"
-                data-cy="createdAt"
-                type="datetime-local"
-                class="form-control"
-                name="createdAt"
-                :class="{ valid: !$v.trip.createdAt.$invalid, invalid: $v.trip.createdAt.$invalid }"
-                :value="convertDateTimeFromServer($v.trip.createdAt.$model)"
-                @change="updateInstantField('createdAt', $event)"
-              />
-            </div>
-          </div>
+          
           <div class="form-group">
             <label class="form-control-label" v-text="$t('hcpgatewayApp.reservationTrip.vehicle')" for="trip-vehicle">Vehicle</label>
             <select class="form-control" id="trip-vehicle" data-cy="vehicle" name="vehicle" v-model="trip.vehicle" required>

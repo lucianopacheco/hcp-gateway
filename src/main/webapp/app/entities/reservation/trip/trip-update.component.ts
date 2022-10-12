@@ -18,13 +18,7 @@ import { LocationType } from '@/shared/model/enumerations/location-type.model';
 
 const validations: any = {
   trip: {
-    driverLogin: {
-      required,
-    },
     whenDateTime: {
-      required,
-    },
-    destinationType: {
       required,
     },
     availableSeats: {

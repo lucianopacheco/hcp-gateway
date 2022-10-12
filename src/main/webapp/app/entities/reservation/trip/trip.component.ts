@@ -8,12 +8,16 @@ import ReservationService from '../reservation/reservation.service';
 import { Reservation } from '@/shared/model/reservation/reservation.model';
 import { ReservationStatus } from '@/shared/model/enumerations/reservation-status.model';
 import AccountService from '@/account/account.service';
+import LocationService from '../location/location.service';
+import { LocationType } from '@/shared/model/enumerations/location-type.model';
+import { ILocation } from '@/shared/model/reservation/location.model';
 
 @Component({
   mixins: [Vue2Filters.mixin],
 })
 export default class Trip extends Vue {
   @Inject('tripService') private tripService: () => TripService;
+  @Inject('locationService') private locationService: () => LocationService;
   @Inject('alertService') private alertService: () => AlertService;
   @Inject('reservationService') private reservationService: () => ReservationService;
   @Inject('accountService') private accountService: () => AccountService;
@@ -30,23 +34,25 @@ export default class Trip extends Vue {
   public trips: ITrip[] = [];
   public tripToReservation: ITrip;
   public reservation: Reservation;
+  public locationHome: ILocation;
+  public locationWork: ILocation;
 
   public isFetching = false;
   private hasAnyAuthorityValues = {};
 
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      // if (to.path == '/trip-driver') {
-      //   vm.retrieveAllTrips();
-      // } else {
-      //   vm.retrieveAllTripsByLocations();
-      // }
-      vm.retrieveAllTrips();
-    });
-  }
+  // beforeRouteEnter(to, from, next) {
+  //   next(vm => {
+  //     // if (to.path == '/trip-driver') {
+  //     //   vm.retrieveAllTrips();
+  //     // } else {
+  //     //   vm.retrieveAllTripsByLocations();
+  //     // }
+  //     vm.retrieveAllTrips();
+  //   });
+  // }
 
   public mounted(): void {
-    //this.retrieveAllTrips();
+    this.retrieveAllTrips();
   }
 
   public clear(): void {
@@ -93,20 +99,33 @@ export default class Trip extends Vue {
       size: this.itemsPerPage,
       sort: this.sort(),
     };
-    this.tripService()
-      .retrieveByLocations(1001, 10, paginationQuery)
-      .then(
-        res => {
-          this.trips = res.data;
-          this.totalItems = Number(res.headers['x-total-count']);
-          this.queryCount = this.totalItems;
-          this.isFetching = false;
-        },
-        err => {
-          this.isFetching = false;
-          this.alertService().showHttpError(this, err.response);
-        }
-      );
+
+    this.locationService()
+      .findByLoginAndLocationType(this.username, LocationType.HOME)
+      .then(res => {
+        this.locationHome = res;
+
+        this.locationService()
+          .findByLoginAndLocationType(this.username, LocationType.LOCATION)
+          .then(res => {
+            this.locationWork = res;
+
+            this.tripService()
+              .retrieveByLocations(this.locationHome.id, this.locationWork.id, paginationQuery)
+              .then(
+                res => {
+                  this.trips = res.data;
+                  this.totalItems = Number(res.headers['x-total-count']);
+                  this.queryCount = this.totalItems;
+                  this.isFetching = false;
+                },
+                err => {
+                  this.isFetching = false;
+                  this.alertService().showHttpError(this, err.response);
+                }
+              );
+          })
+      })
   }
 
   public handleSyncList(): void {

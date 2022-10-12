@@ -3,6 +3,7 @@ import axios from 'axios';
 import buildPaginationQueryOpts from '@/shared/sort/sorts';
 
 import { ILocation } from '@/shared/model/reservation/location.model';
+import { LocationType } from '@/shared/model/enumerations/location-type.model';
 
 const baseApiUrl = 'services/reservation/api/locations';
 
@@ -24,6 +25,19 @@ export default class LocationService {
     return new Promise<ILocation>((resolve, reject) => {
       axios
         .get(`${baseApiUrl}/zipcode/${zipcode}/number/${number}`)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
+  public findByLoginAndLocationType(login: string, locationType: LocationType): Promise<ILocation> {
+    return new Promise<ILocation>((resolve, reject) => {
+      axios
+        .get(`${baseApiUrl}/login/${login}/locationType/${locationType}`)
         .then(res => {
           resolve(res.data);
         })
