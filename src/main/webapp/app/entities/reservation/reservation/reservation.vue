@@ -7,17 +7,7 @@
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="$t('hcpgatewayApp.reservationReservation.home.refreshListLabel')">Refresh List</span>
         </button>
-        <router-link :to="{ name: 'ReservationCreate' }" custom v-slot="{ navigate }">
-          <button
-            @click="navigate"
-            id="jh-create-entity"
-            data-cy="entityCreateButton"
-            class="btn btn-primary jh-create-entity create-reservation"
-          >
-            <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span v-text="$t('hcpgatewayApp.reservationReservation.home.createLabel')"> Create a new Reservation </span>
-          </button>
-        </router-link>
+       
       </div>
     </h2>
     <br />

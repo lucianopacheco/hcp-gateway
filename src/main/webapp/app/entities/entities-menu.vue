@@ -12,7 +12,7 @@
       <font-awesome-icon icon="asterisk" />
       <span v-text="$t('global.menu.entities.reservationVehicle')">Vehicle</span>
     </b-dropdown-item>
-    <b-dropdown-item to="/trip">
+    <b-dropdown-item to="/trip" v-if="hasAuthority('ROLE_PASSENGER') && authenticated">
       <font-awesome-icon icon="asterisk" />
       <span v-text="$t('global.menu.entities.reservationTrip')">Trip</span>
     </b-dropdown-item>

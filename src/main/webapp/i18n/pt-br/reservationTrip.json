@@ -4,8 +4,8 @@
       "home": {
         "title": "Viagens",
         "refreshListLabel": "Atualizar lista",
-        "createLabel": "Criar novo Trip",
-        "createOrEditLabel": "Criar ou editar Trip",
+        "createLabel": "Criar Viagem",
+        "createOrEditLabel": "Criar Viagem",
         "notFound": "Nenhuma viagem encontrada"
       },
       "delete": {
@@ -15,16 +15,16 @@
         "question": "Confirma a reserva desta viagem?"
       },
       "detail": {
-        "title": "Trip"
+        "title": "Viagem"
       },
       "id": "ID",
       "driverLogin": "Motorista",
       "whenDateTime": "Quando?",
-      "destinationType": "Destination Type",
+      "destinationType": "Sentido",
       "availableSeats": "Assentos Disponíveis",
       "price": "Preço",
       "meetingPoint": "Ponto de Encontro",
-      "createdAt": "Created At",
+      "createdAt": "Data de criação",
       "vehicle": "Veículo",
       "from": "De",
       "to": "Para"
@@ -32,9 +32,9 @@
   },
   "reservationApp": {
     "reservationTrip": {
-      "created": "Um novo Trip foi criado com o identificador {{ param }}",
-      "updated": "Um Trip foi atualizado com o identificador {{ param }}",
-      "deleted": "Um Trip foi excluído com o identificador {{ param }}"
+      "created": "Viagem cadastrada com sucesso",
+      "updated": "Viagem atualizada com sucesso",
+      "deleted": "Viagem cancelada com sucesso"
     }
   }
 }

@@ -15,7 +15,7 @@
         "question": "Tem certeza de que deseja excluir Reservation {{ id }}?"
       },
       "detail": {
-        "title": "Reservation"
+        "title": "Reserva"
       },
       "id": "ID",
       "passengerLogin": "Passageiro",

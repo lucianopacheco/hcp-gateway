@@ -17,6 +17,7 @@
         "title": "Location"
       },
       "id": "ID",
+      "name": "Nome",
       "nameHome": "Nome do Condomínio",
       "nameWork": "Nome do Trabalho",
       "zipcode": "CEP",
