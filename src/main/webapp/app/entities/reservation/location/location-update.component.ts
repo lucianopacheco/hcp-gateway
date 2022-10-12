@@ -150,4 +150,9 @@ export default class LocationUpdate extends Vue {
   }
 
   public initRelationships(): void {}
+
+  get locationLabel(): string {
+    return this.location.type === LocationType.HOME ? 'hcpgatewayApp.reservationLocation.nameHome' : 
+      'hcpgatewayApp.reservationLocation.nameWork';
+  }
 }

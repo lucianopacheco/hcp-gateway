@@ -8,7 +8,7 @@
         "createCondominium": "Cadastrar Condomínio",
         "createWork": "Cadastrar Local de Trabalho",
         "editLocation": "Editar Localização",
-        "notFound": "Nenhum local encontrado. Realize o cadastrado do seu condomínio e de seu local de trabalho."
+        "notFound": "Nenhum local encontrado. Realize o cadastro do seu condomínio e de seu local de trabalho."
       },
       "delete": {
         "question": "Tem certeza de que deseja excluir Location {{ id }}?"
@@ -17,7 +17,8 @@
         "title": "Location"
       },
       "id": "ID",
-      "name": "Nome",
+      "nameHome": "Nome do Condomínio",
+      "nameWork": "Nome do Trabalho",
       "zipcode": "CEP",
       "address": "Endereço",
       "number": "Número",

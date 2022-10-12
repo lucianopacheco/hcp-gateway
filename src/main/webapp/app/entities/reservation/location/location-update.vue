@@ -76,7 +76,7 @@
             </div>
 
             <div class="form-group col-md-6">
-              <label class="form-control-label" for="location-teste">Numero</label>
+              <label class="form-control-label" for="location-teste">Número</label>
               <input
                 type="text"
                 class="form-control"
@@ -100,7 +100,7 @@
 
           <div v-show="location.zipcode && location.number">
             <div class="form-group">
-              <label class="form-control-label" v-text="$t('hcpgatewayApp.reservationLocation.name')" for="location-name">Name</label>
+              <label class="form-control-label" v-text="$t(locationLabel)" for="location-name">Name</label>
               <input
                 type="text"
                 class="form-control"
@@ -180,7 +180,7 @@
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.cancel')">Cancel</span>
+            <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.back')">Back</span>
           </button>
           <button
             type="submit"
