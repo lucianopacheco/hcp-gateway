@@ -12,8 +12,6 @@
           <span v-if="username" v-text="$t('home.logged.message', { username: username })">You are logged in as user "{{ username }}"</span>
         </div>
 
-        {{ userAccount }}
-
         <div class="alert alert-warning" v-if="!authenticated" v-show="false">
           <span v-text="$t('global.messages.info.authenticated.prefix')">If you want to </span>
           <a class="alert-link" v-on:click="openLogin()" v-text="$t('global.messages.info.authenticated.link')">sign in</a

@@ -4,8 +4,9 @@
       <div class="col-md-8 toastify-container">
         <h1 v-text="$t('register.title')" id="register-title" data-cy="registerTitle">Registration</h1>
 
-        <div class="alert alert-success" role="alert" v-if="success" v-html="$t('register.messages.success')">
-          <strong>Registration saved!</strong> Please check your email for confirmation.
+        <div class="alert alert-success" role="alert" v-if="success">
+          <strong v-html="$t('register.messages.success')">Registration saved!</strong> 
+         <a class="alert-link" v-on:click="openLogin()" v-text="$t('global.messages.info.authenticated.linkUpper')">sign in</a>
         </div>
 
         <div class="alert alert-danger" role="alert" v-if="error" v-html="$t('register.messages.error.fail')">
@@ -207,7 +208,7 @@
           </button>
         </form>
         <p></p>
-        <div class="alert alert-warning">
+        <div class="alert alert-warning" v-show="false">
           <span v-text="$t('global.messages.info.authenticated.prefix')">If you want to </span>
           <a class="alert-link" v-on:click="openLogin()" v-text="$t('global.messages.info.authenticated.link')">sign in</a
           ><span v-html="$t('global.messages.info.authenticated.suffix')"

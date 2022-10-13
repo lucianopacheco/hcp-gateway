@@ -32,15 +32,15 @@
             >
             </b-form-input>
           </b-form-group>
-          <b-form-checkbox id="rememberMe" name="rememberMe" v-model="rememberMe" checked>
+          <!-- <b-form-checkbox id="rememberMe" name="rememberMe" v-model="rememberMe" checked>
             <span v-text="$t('login.form.rememberme')">Remember me</span>
-          </b-form-checkbox>
+          </b-form-checkbox> -->
           <div>
             <b-button data-cy="submit" type="submit" variant="primary" v-text="$t('login.form.button')">Sign in</b-button>
           </div>
         </b-form>
         <p></p>
-        <div>
+        <!-- <div>
           <b-alert show variant="warning">
             <b-link
               :to="'/account/reset/request'"
@@ -50,8 +50,8 @@
               >Did you forget your password?</b-link
             >
           </b-alert>
-        </div>
-        <div>
+        </div> -->
+        <div v-show="false">
           <b-alert show variant="warning">
             <span v-text="$t('global.messages.info.register.noaccount')">You don't have an account yet?</span>
             <b-link :to="'/register'" class="alert-link" v-text="$t('global.messages.info.register.link')">Register a new account</b-link>

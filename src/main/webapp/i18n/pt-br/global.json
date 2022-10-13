@@ -45,8 +45,8 @@
       "language": "Idioma"
     },
     "form": {
-      "username.label": "Usuário",
-      "username.placeholder": "Seu usuário",
+      "username.label": "Login",
+      "username.placeholder": "Seu login",
       "currentpassword.label": "Senha atual",
       "currentpassword.placeholder": "Senha atual",
       "newpassword.label": "Nova senha",
@@ -61,6 +61,7 @@
         "authenticated": {
           "prefix": "Se deseja ",
           "link": "entrar",
+          "linkUpper": "Clique para entrar",
           "suffix": ", utilize as seguintes contas padrões:<br/>- Administrador (usuário=\"admin\" and senha=\"admin\") <br/>- Usuário (usuário=\"user\" e senha=\"user\")."
         },
         "register": {
