@@ -2,15 +2,22 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2
-          id="hcpgatewayApp.reservationVehicle.home.createOrEditLabel"
+        <h2 v-show="!vehicle.id"
+          id="hcpgatewayApp.reservationVehicle.home.createLabel"
           data-cy="VehicleCreateUpdateHeading"
-          v-text="$t('hcpgatewayApp.reservationVehicle.home.createOrEditLabel')"
+          v-text="$t('hcpgatewayApp.reservationVehicle.home.createLabel')"
         >
-          Create or edit a Vehicle
+          Create Vehicle
+        </h2>
+         <h2 v-show="vehicle.id"
+          id="hcpgatewayApp.reservationVehicle.home.editLabel"
+          data-cy="VehicleCreateUpdateHeading"
+          v-text="$t('hcpgatewayApp.reservationVehicle.home.editLabel')"
+        >
+          Edit Vehicle
         </h2>
         <div>
-          <div class="form-group" v-if="vehicle.id">
+          <div class="form-group" v-if="vehicle.id" v-show="false">
             <label for="id" v-text="$t('global.field.id')">ID</label>
             <input type="text" class="form-control" id="id" name="id" v-model="vehicle.id" readonly />
           </div>
@@ -59,6 +66,7 @@
               type="text"
               class="form-control"
               name="plate"
+              maxlength="7"
               id="vehicle-plate"
               data-cy="plate"
               :class="{ valid: !$v.vehicle.plate.$invalid, invalid: $v.vehicle.plate.$invalid }"
@@ -71,30 +79,11 @@
               </small>
             </div>
           </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('hcpgatewayApp.reservationVehicle.driverLogin')" for="vehicle-driverLogin"
-              >Driver Login</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              name="driverLogin"
-              id="vehicle-driverLogin"
-              data-cy="driverLogin"
-              :class="{ valid: !$v.vehicle.driverLogin.$invalid, invalid: $v.vehicle.driverLogin.$invalid }"
-              v-model="$v.vehicle.driverLogin.$model"
-              required
-            />
-            <div v-if="$v.vehicle.driverLogin.$anyDirty && $v.vehicle.driverLogin.$invalid">
-              <small class="form-text text-danger" v-if="!$v.vehicle.driverLogin.required" v-text="$t('entity.validation.required')">
-                This field is required.
-              </small>
-            </div>
-          </div>
+          
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.cancel')">Cancel</span>
+            <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.back')">Cancel</span>
           </button>
           <button
             type="submit"

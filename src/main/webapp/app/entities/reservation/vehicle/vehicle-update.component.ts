@@ -18,10 +18,7 @@ const validations: any = {
     },
     plate: {
       required,
-    },
-    driverLogin: {
-      required,
-    },
+    }
   },
 };
 

@@ -28,23 +28,20 @@
       <table class="table table-striped" aria-describedby="vehicles">
         <thead>
           <tr>
-            <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
             <th scope="row"><span v-text="$t('hcpgatewayApp.reservationVehicle.model')">Model</span></th>
             <th scope="row"><span v-text="$t('hcpgatewayApp.reservationVehicle.year')">Year</span></th>
             <th scope="row"><span v-text="$t('hcpgatewayApp.reservationVehicle.plate')">Plate</span></th>
-            <th scope="row"><span v-text="$t('hcpgatewayApp.reservationVehicle.driverLogin')">Driver Login</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="vehicle in vehicles" :key="vehicle.id" data-cy="entityTable">
-            <td>
+            <td v-show="false">
               <router-link :to="{ name: 'VehicleView', params: { vehicleId: vehicle.id } }">{{ vehicle.id }}</router-link>
             </td>
             <td>{{ vehicle.model }}</td>
             <td>{{ vehicle.year }}</td>
             <td>{{ vehicle.plate }}</td>
-            <td>{{ vehicle.driverLogin }}</td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'VehicleView', params: { vehicleId: vehicle.id } }" custom v-slot="{ navigate }">

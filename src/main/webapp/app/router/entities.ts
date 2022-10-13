@@ -111,19 +111,19 @@ export default {
       path: 'vehicle',
       name: 'Vehicle',
       component: Vehicle,
-      meta: { authorities: [Authority.USER] },
+      meta: { authorities: [Authority.USER, Authority.DRIVER] },
     },
     {
       path: 'vehicle/new',
       name: 'VehicleCreate',
       component: VehicleUpdate,
-      meta: { authorities: [Authority.USER] },
+      meta: { authorities: [Authority.USER, Authority.DRIVER] },
     },
     {
       path: 'vehicle/:vehicleId/edit',
       name: 'VehicleEdit',
       component: VehicleUpdate,
-      meta: { authorities: [Authority.USER] },
+      meta: { authorities: [Authority.USER, Authority.DRIVER] },
     },
     {
       path: 'vehicle/:vehicleId/view',
