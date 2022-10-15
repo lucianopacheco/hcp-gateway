@@ -161,5 +161,5 @@
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
     }
   },
-  "footer": "Projeto Integrado do curso Arquitetura de Software Distribuído pela PUC Minas Virtual. Autor: Luciano Pacheco Costa"
+  "footer": "Projeto Integrado do curso Arquitetura de Software Distribuído pela PUC Minas Virtual. Aluno: Luciano Pacheco Costa"
 }
