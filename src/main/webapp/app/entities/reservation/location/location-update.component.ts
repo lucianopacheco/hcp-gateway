@@ -40,6 +40,7 @@ export default class LocationUpdate extends Vue {
   public location: ILocation = new Location();
   public locationTypeValues: string[] = Object.keys(LocationType);
   public isSaving = false;
+  public isFetching = false;
   public currentLanguage = '';
 
   beforeRouteEnter(to, from, next) {
@@ -122,9 +123,11 @@ export default class LocationUpdate extends Vue {
 
   public retrieveLocationByZipcodeAndNumber(): void {
 
-    if (!this.location.zipcode || !this.location.number) {
+    if ((!this.location.zipcode || !this.location.number) || this.location.zipcode.length != 8) {
       return;
     }
+
+    this.isFetching = true;
 
     this.locationService()
       .findByZipcodeAndNumber(this.location.zipcode, this.location.number)
@@ -135,6 +138,7 @@ export default class LocationUpdate extends Vue {
         this.location.address = res.address;
         this.location.city = res.city;
         this.location.state = res.state;
+        this.isFetching = false;
       })
       .catch(error => {
         this.location.id = null;
@@ -142,6 +146,7 @@ export default class LocationUpdate extends Vue {
         this.location.address = "";
         this.location.city = "";
         this.location.state = "";
+        this.isFetching = false;
       });
   }
 
