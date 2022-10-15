@@ -38,10 +38,7 @@
       <table class="table table-striped" aria-describedby="locations">
         <thead>
           <tr>
-            <th scope="row" v-on:click="changeOrder('id')">
-              <span v-text="$t('global.field.id')">ID</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
-            </th>
+            
             <th scope="row" v-on:click="changeOrder('name')">
               <span v-text="$t('hcpgatewayApp.reservationLocation.name')">Name</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'name'"></jhi-sort-indicator>
@@ -75,9 +72,7 @@
         </thead>
         <tbody>
           <tr v-for="location in locations" :key="location.id" data-cy="entityTable">
-            <td>
-              <router-link :to="{ name: 'LocationView', params: { locationId: location.id } }">{{ location.id }}</router-link>
-            </td>
+            
             <td>{{ location.name }}</td>
             <td>{{ location.zipcode }}</td>
             <td>{{ location.address }}</td>

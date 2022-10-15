@@ -23,10 +23,7 @@
       <table class="table table-striped" aria-describedby="trips">
         <thead>
           <tr>
-            <th scope="row" v-on:click="changeOrder('id')">
-              <span v-text="$t('global.field.id')">ID</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
-            </th>
+            
             <th scope="row" v-on:click="changeOrder('driverLogin')">
               <span v-text="$t('hcpgatewayApp.reservationTrip.driverLogin')">Driver Login</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'driverLogin'"></jhi-sort-indicator>
@@ -72,9 +69,7 @@
         </thead>
         <tbody>
           <tr v-for="trip in trips" :key="trip.id" data-cy="entityTable">
-            <td>
-              <router-link :to="{ name: 'TripView', params: { tripId: trip.id } }">{{ trip.id }}</router-link>
-            </td>
+            
             <td>{{ trip.driverLogin }}</td>
             <td>{{ trip.whenDateTime | formatDate }}</td>
             <td v-text="$t('hcpgatewayApp.LocationType.' + trip.destinationType)">{{ trip.destinationType }}</td>
