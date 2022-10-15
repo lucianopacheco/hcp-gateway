@@ -51,7 +51,7 @@
             >
           </b-alert>
         </div> -->
-        <div v-show="false">
+        <div v-show="true">
           <b-alert show variant="warning">
             <span v-text="$t('global.messages.info.register.noaccount')">You don't have an account yet?</span>
             <b-link :to="'/register'" class="alert-link" v-text="$t('global.messages.info.register.link')">Register a new account</b-link>
