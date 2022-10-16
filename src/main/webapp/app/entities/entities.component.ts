@@ -1,7 +1,6 @@
 import { Component, Provide, Vue } from 'vue-property-decorator';
 
 import UserService from '@/entities/user/user.service';
-import CondominiumService from './reservation/condominium/condominium.service';
 import LocationService from './reservation/location/location.service';
 import VehicleService from './reservation/vehicle/vehicle.service';
 import TripService from './reservation/trip/trip.service';
@@ -12,7 +11,6 @@ import LocationUserService from './reservation/location-user/location-user.servi
 @Component
 export default class Entities extends Vue {
   @Provide('userService') private userService = () => new UserService();
-  @Provide('condominiumService') private condominiumService = () => new CondominiumService();
   @Provide('locationService') private locationService = () => new LocationService();
   @Provide('vehicleService') private vehicleService = () => new VehicleService();
   @Provide('tripService') private tripService = () => new TripService();
