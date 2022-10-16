@@ -5,12 +5,6 @@ import { Authority } from '@/shared/security/authority';
 const Entities = () => import('@/entities/entities.vue');
 
 // prettier-ignore
-const Condominium = () => import('@/entities/reservation/condominium/condominium.vue');
-// prettier-ignore
-const CondominiumUpdate = () => import('@/entities/reservation/condominium/condominium-update.vue');
-// prettier-ignore
-const CondominiumDetails = () => import('@/entities/reservation/condominium/condominium-details.vue');
-// prettier-ignore
 const Location = () => import('@/entities/reservation/location/location.vue');
 // prettier-ignore
 const LocationUpdate = () => import('@/entities/reservation/location/location-update.vue');
@@ -46,30 +40,6 @@ export default {
   path: '/',
   component: Entities,
   children: [
-    {
-      path: 'condominium',
-      name: 'Condominium',
-      component: Condominium,
-      meta: { authorities: [Authority.USER] },
-    },
-    {
-      path: 'condominium/new',
-      name: 'CondominiumCreate',
-      component: CondominiumUpdate,
-      meta: { authorities: [Authority.USER] },
-    },
-    {
-      path: 'condominium/:condominiumId/edit',
-      name: 'CondominiumEdit',
-      component: CondominiumUpdate,
-      meta: { authorities: [Authority.USER] },
-    },
-    {
-      path: 'condominium/:condominiumId/view',
-      name: 'CondominiumView',
-      component: CondominiumDetails,
-      meta: { authorities: [Authority.USER] },
-    },
     {
       path: 'location',
       name: 'Location',
